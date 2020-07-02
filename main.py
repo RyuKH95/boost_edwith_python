@@ -1,72 +1,36 @@
-# # 일반 코드
-# colors = ["a", "b", "c", "d", "e"]
-# result = ""
+# Enumerate
+# list에 있는 index와 값을 unpacking
+for i, v in enumerate(['tic', 'tac', 'toc']):
+    print(i, v)
 
-# for s in colors:
-#     result += s
+mylist = ["a", "b", "c", "d"]
+# list에 있는 index와 값을 unpacking하여 list로 저장
+l = list(enumerate(mylist))
+print(l)
+# 문장을 list로 만들고 list의 index와 값을 unpacking하여 dict로 저장
+e = {i: j for i, j in enumerate(
+    'Gachon University is an academic institute located in South Korea.'.split())}
+print(e)
 
-# print(result)
+# Zip
+# for loop + zip
+# 두 개의 list의 값을 병렬적으로 추출함
+alist = ['a1', 'a2', 'a3']
+blist = ['b1', 'b2', 'b3']
+for a, b in zip(alist, blist):
+    print(a, b)
+# list comprehension + zip
+# 각 tuple의 같은 index끼리 묶음
+a, b, c = zip((1, 2, 3), (10, 20, 30), (100, 200, 300))
+print(a, b, c)
 
-# # pythonic code
-# colors = ["red", "blue", "green", "yellow"]
-# result = "".join(colors)
+# 각 tuple의 같은 index를 묶어 합을 list로 변환
+sum = [sum(x) for x in zip((1, 2, 3), (10, 20, 30), (100, 200, 300))]
+print(sum)
 
-# print(result)
-
-# # split
-# items = 'zero one two three'.split()
-# print(items)
-
-# example = 'python,jquery,javascript'
-# print(example.split(","))
-# a, b, c = example.split(",")  # unpacking
-# print(a, b, c)
-
-# # join
-# colors = ["red", "blue", "green", "yellow"]
-# result = ''.join(colors)
-# print(result)
-# result = ' '.join(colors)
-# print(result)
-# result = ', '.join(colors)
-# print(result)
-# result = '-'.join(colors)
-# print(result)
-
-
-# for loog + append 사용하기
-result = []
-for i in range(10):
-    result.append(i)
-print(result)
-
-# list Comprehension 사용하기
-result = [i for i in range(10)]
-print(result)
-
-result = [i for i in range(10) if i % 2 == 0]
-print(result)
-
-# Nested For loop
-# 한 배열에 모두 들어감
-word_1 = "Hello"
-word_2 = "World"
-result = [i+j for i in word_1 for j in word_2]
-print(result)
-
-# Nested For loop + if문
-case_1 = ["A", "B", "C"]
-case_2 = ["D", "E", "A"]
-result = [i+j for i in case_1 for j in case_2]
-print(result)
-result = [i+j for i in case_1 for j in case_2 if i != j]
-print(result)
-result.sort()
-print(result)
-
-# split + list Comprehension
-words = 'The quick brown fox jumps over the lazy dog'.split()
-print(words)
-stuff = [[w.upper(), w.lower(), len(w)] for w in words]
-for i in stuff:
-    print(i)
+#enumerate + zip
+alist = ['a1', 'a2', 'a3']
+blist = ['b1', 'b2', 'b3']
+# 첫번째 인수는 index
+for i, (a, b) in enumerate(zip(alist, blist)):
+    print(i, a, b)
